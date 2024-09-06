@@ -7,8 +7,9 @@ function HomePage() {
   const [entries, setEntries] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  useEffect(() => {
-    const storedEntries = localStorage.getItem('entries');
+  const storedEntries = localStorage.getItem('entries' || []);
+  
+  useEffect(() => {  
     if (storedEntries) {
       setEntries(JSON.parse(storedEntries));
     }

@@ -2,17 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';  
 
 function EntryCard({ entry, onClick }) {  
-  // Debugging logs  
-  console.log(entry); // Check the entry object  
-  console.log(entry.image); // Check the image url  
 
+  const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+  if(loggedInUser.email !== entry.email) return null;
   return (  
     <div  
       className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer"  
       onClick={onClick}  
     >  
       <img  
-        src={entry.image}  
+        src="https://picsum.photos/200/300" 
         alt={entry.title}  
         className="h-40 w-full object-cover rounded-md mb-3"  
         onError={(e) => {  

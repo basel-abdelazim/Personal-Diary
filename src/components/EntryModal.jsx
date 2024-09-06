@@ -5,16 +5,6 @@ function ParentComponent() {
   const [isOpen, setIsOpen] = useState(false);  
   const [entry, setEntry] = useState(null);  
 
-  const entries = [  
-    {  
-      title: 'Entry 1',  
-      image: 'path/to/image1.jpg',  
-      date: '2023-10-01',  
-      content: 'This is the content for entry 1.',  
-    },  
-    // Add more entries as needed  
-  ];  
-
   const handleOpenModal = (entry) => {  
     setEntry(entry);  
     setIsOpen(true);  

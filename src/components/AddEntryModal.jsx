@@ -9,13 +9,16 @@ function AddEntryModal({ isOpen, onClose, onSave, entries }) {
     onSave: PropTypes.func.isRequired,
     entries: PropTypes.array.isRequired,
   };
+
   const [title, setTitle] = useState('');
   const [date, setDate] = useState('');
   const [image, setImage] = useState('');
   const [content, setContent] = useState('');
 
+  const email = JSON.parse(localStorage.getItem('loggedInUser')).email;
+  
   const handleSave = () => {
-    if (!title || !date || !image || !content) {
+    if (!title || !date || !content) {
       alert('Please fill in all fields');
       return;
     }
@@ -26,7 +29,7 @@ function AddEntryModal({ isOpen, onClose, onSave, entries }) {
       return;
     }
 
-    const newEntry = { title, date, image, content };
+    const newEntry = { email, title, date, image, content };
     onSave(newEntry);
     onClose();
   };

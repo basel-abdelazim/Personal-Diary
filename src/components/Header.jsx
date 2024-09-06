@@ -2,21 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 
-function Header({ onAddEntryClick, onLogoutClick }) {
+function Header({ onAddEntryClick}) {
   const navigate = useNavigate();
 
   const handleLogoutClick = () => {
-    // Save the entries list for this user before logging out
-    // You can use localStorage or any other method to store the data
-    // Example using localStorage:
-    // Replace with your actual entries list
-    const entries = JSON.parse(localStorage.getItem('entries'));
-
-    // Call the provided onLogoutClick function
-    onLogoutClick();
-
-    // Navigate to '/'
-    navigate('/');
+    const userLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn'));
+    if (userLoggedIn) {
+      localStorage.removeItem('isLoggedIn');
+      localStorage.removeItem('loggedInUser');
+    }
+    navigate('/login');
   };
 
   return (

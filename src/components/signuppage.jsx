@@ -32,7 +32,7 @@ function SignUpPage() {
     // Store updated users in local storage
     localStorage.setItem('users', JSON.stringify(existingUsers));
     // Handle sign up logic here (e.g., API call)
-    navigate('/'); // Redirect to homepage after successful sign up
+    navigate('/login'); // Redirect to homepage after successful sign up
   };
 
   return (
